@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @Validated
-@Api(value = "recipe", description = "the recipe API")
+@Api(value = "recipe", description = "Recipe API")
 public interface RecipeApi {
 
 	@ApiOperation(value = "Creates a Recipe", nickname = "createRecipe", notes = "This operation creates a Recipe entity.", response = Recipe.class, tags = {
