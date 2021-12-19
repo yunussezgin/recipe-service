@@ -1,9 +1,12 @@
 package com.crediteurope.recipe.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -19,22 +22,20 @@ import lombok.Setter;
 @Entity
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@ApiModel(description = "A relation between recipe and ingredient.")
-public class RecipeIngredient extends BaseEntity {
+@ApiModel(description = "Owner of the recipe.")
+public class Users extends BaseEntity {
 
 	@Id
 	@JsonProperty("id")
-	@ApiModelProperty(required = true, value = "Unique identifier of the recipeingredient entity.")
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@ApiModelProperty(required = true, value = "Unique identifier of the user entity.")
 	private String id = null;
 
+	@NotBlank
 	@NotNull
-	@JsonProperty("amount")
-	@ApiModelProperty(required = true, value = "Numeric value in a given unit.")
-	private Float amount;
-
-	@NotNull
-	@JsonProperty("unit")
-	@ApiModelProperty(value = "Unit of used ingredients.")
-	private String unit = null;
+	@JsonProperty("name")
+	@ApiModelProperty(required = true, value = "Name of the user.")
+	private String name = null;
 
 }

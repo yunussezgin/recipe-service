@@ -4,7 +4,6 @@ import java.time.OffsetDateTime;
 
 import javax.persistence.MappedSuperclass;
 
-import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -23,7 +22,8 @@ public class BaseEntity {
 	@CreatedDate
 	private OffsetDateTime createdDate;
 
-	@ApiModelProperty(name = "createdBy")
-	@CreatedBy
-	private String createdBy;
+//	@ApiModelProperty(name = "createdBy")
+//	@CreatedBy
+//	private String createdBy;
+
 }

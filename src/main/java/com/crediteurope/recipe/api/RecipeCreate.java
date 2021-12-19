@@ -1,12 +1,10 @@
-package com.crediteurope.recipe.entity;
+package com.crediteurope.recipe.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -14,9 +12,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.validation.annotation.Validated;
 
+import com.crediteurope.recipe.entity.Category;
+import com.crediteurope.recipe.entity.IngredientScale;
+import com.crediteurope.recipe.entity.InstructionStep;
+import com.crediteurope.recipe.entity.Users;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -27,18 +28,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@ApiModel(description = "A user defines the recipe.")
-public class Recipe extends BaseEntity {
-
-	@Id
-	@JsonProperty("id")
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@ApiModelProperty(required = true, value = "Unique identifier of the recipe entity.")
-	private String id = null;
+@ApiModel(value = "Recipe_Create", description = "The entity provides to create recipe data.")
+public class RecipeCreate {
 
 	@NotBlank
 	@NotNull
@@ -75,7 +68,7 @@ public class Recipe extends BaseEntity {
 	@Valid
 	@NotNull
 	@ApiModelProperty(value = "Category reference.")
-	@JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_recipe_category"))
+	@JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_category_recipe"))
 	@JsonProperty("category")
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Category.class)
 	private Category category = null;
@@ -83,21 +76,23 @@ public class Recipe extends BaseEntity {
 	@Valid
 	@NotNull
 	@ApiModelProperty(value = "User reference.")
-	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_recipe_user"))
+	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_user_recipe"))
 	@JsonProperty("user")
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Users.class)
 	private Users user = null;
 
 	@Valid
 	@ApiModelProperty(value = "Instruction step reference.")
+	@JoinColumn(name = "instructionStep_id", foreignKey = @ForeignKey(name = "fk_instruction_step_recipe"))
 	@JsonProperty("instructionStep")
-	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = InstructionStep.class)
-	private List<InstructionStep> instructionStep;
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = InstructionStep.class)
+	private List<InstructionStep> instructionStep = new ArrayList<>();
 
 	@Valid
 	@ApiModelProperty(value = "Ingredient scale reference.")
+	@JoinColumn(name = "ingredientScale_id", foreignKey = @ForeignKey(name = "fk_ingredient_scale_recipe"))
 	@JsonProperty("ingredientScale")
-	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = IngredientScale.class)
-	private List<IngredientScale> ingredientScale;
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = IngredientScale.class)
+	private List<IngredientScale> ingredientScale = new ArrayList<>();
 
 }
