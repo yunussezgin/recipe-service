@@ -91,13 +91,15 @@ public class Recipe extends BaseEntity {
 	@Valid
 	@ApiModelProperty(value = "Instruction step reference.")
 	@JsonProperty("instructionStep")
-	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = InstructionStep.class)
+	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_instruction_step_recipe"))
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = InstructionStep.class)
 	private List<InstructionStep> instructionStep;
 
 	@Valid
 	@ApiModelProperty(value = "Ingredient scale reference.")
 	@JsonProperty("ingredientScale")
-	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = IngredientScale.class)
+	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_ingredient_scale_recipe"))
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = IngredientScale.class)
 	private List<IngredientScale> ingredientScale;
 
 }

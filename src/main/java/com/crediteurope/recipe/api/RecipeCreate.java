@@ -1,6 +1,5 @@
 package com.crediteurope.recipe.api;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -83,16 +82,16 @@ public class RecipeCreate {
 
 	@Valid
 	@ApiModelProperty(value = "Instruction step reference.")
-	@JoinColumn(name = "instructionStep_id", foreignKey = @ForeignKey(name = "fk_instruction_step_recipe"))
 	@JsonProperty("instructionStep")
+	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_instruction_step_recipe"))
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = InstructionStep.class)
-	private List<InstructionStep> instructionStep = new ArrayList<>();
+	private List<InstructionStep> instructionStep;
 
 	@Valid
 	@ApiModelProperty(value = "Ingredient scale reference.")
-	@JoinColumn(name = "ingredientScale_id", foreignKey = @ForeignKey(name = "fk_ingredient_scale_recipe"))
 	@JsonProperty("ingredientScale")
+	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_ingredient_scale_recipe"))
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = IngredientScale.class)
-	private List<IngredientScale> ingredientScale = new ArrayList<>();
+	private List<IngredientScale> ingredientScale;
 
 }

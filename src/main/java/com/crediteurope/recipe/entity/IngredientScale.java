@@ -2,12 +2,10 @@ package com.crediteurope.recipe.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -16,7 +14,6 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.validation.annotation.Validated;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -50,12 +47,6 @@ public class IngredientScale extends BaseEntity {
 	@JsonProperty("unit")
 	@ApiModelProperty(value = "Unit of used ingredients.")
 	private String unit = null;
-
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_ingredient_scale_recipe"))
-	@ApiModelProperty(value = "Ingredient scale reference to the recipe.")
-	private Recipe recipe = null;
 
 	@Valid
 	@NotNull
