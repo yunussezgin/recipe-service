@@ -2,10 +2,9 @@ package com.crediteurope.recipe.api;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.crediteurope.recipe.entity.Recipe;
 import com.crediteurope.recipe.exception.NotFoundException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.querydsl.core.types.Predicate;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -76,8 +76,7 @@ public interface RecipeApi {
 	ResponseEntity<List<Recipe>> listRecipe(
 			@ApiParam(value = "Requested index for start of resources to be provided in response") @Valid @RequestParam(value = "offset", required = false) Integer offset,
 			@ApiParam(value = "Requested number of resources to be provided in response") @Valid @RequestParam(value = "limit", required = false) Integer limit,
-			@ApiParam(value = "Sort parameter") @Valid @RequestParam(value = "sort", required = false) String sort,
-			HttpServletResponse response, HttpServletRequest request);
+			@ApiParam(value = "Query parameter to filter records") @QuerydslPredicate(root = Recipe.class) Predicate predicate);
 
 	@ApiOperation(value = "Updates partially a Recipe", nickname = "patchRecipe", notes = "This operation updates partially a Recipe entity.", response = Recipe.class, tags = {
 			"recipe", })

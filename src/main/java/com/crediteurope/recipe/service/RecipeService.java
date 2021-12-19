@@ -7,6 +7,7 @@ import com.crediteurope.recipe.api.RecipeUpdate;
 import com.crediteurope.recipe.entity.Recipe;
 import com.crediteurope.recipe.exception.NotFoundException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.querydsl.core.types.Predicate;
 
 public interface RecipeService {
 
@@ -14,7 +15,7 @@ public interface RecipeService {
 
 	void deleteRecipe(String id) throws NotFoundException;
 
-	Page<Recipe> listRecipe(Integer offset, Integer limit, String sort);
+	Page<Recipe> listRecipe(Integer offset, Integer limit, Predicate predicate);
 
 	Recipe patchRecipe(String id, RecipeUpdate recipeUpdate) throws JsonProcessingException, NotFoundException;
 

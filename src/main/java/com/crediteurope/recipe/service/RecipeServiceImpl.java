@@ -2,18 +2,22 @@ package com.crediteurope.recipe.service;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crediteurope.recipe.api.RecipeCreate;
 import com.crediteurope.recipe.api.RecipeUpdate;
+import com.crediteurope.recipe.data.PagingParams;
 import com.crediteurope.recipe.entity.Recipe;
 import com.crediteurope.recipe.exception.NotFoundException;
 import com.crediteurope.recipe.repository.RecipeRepository;
+import com.crediteurope.recipe.util.CommonUtils;
 import com.crediteurope.recipe.util.Constant;
 import com.crediteurope.recipe.util.JsonMergePatcher;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.querydsl.core.types.Predicate;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -48,9 +52,13 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
-	public Page<Recipe> listRecipe(Integer offset, Integer limit, String sort) {
-		// TODO Auto-generated method stub
-		return null;
+	public Page<Recipe> listRecipe(Integer offset, Integer limit, Predicate predicate) {
+		log.info("RecipeService -> listRecipe started! offset: {} limit: {}", offset, limit);
+		PagingParams pagingParams = CommonUtils.fixParameters(offset, limit);
+		Page<Recipe> recipes = recipeRepository.findAll(predicate,
+				PageRequest.of(pagingParams.getOffset(), pagingParams.getLimit()));
+		log.info("RecipeService -> listRecipe completed!");
+		return recipes;
 	}
 
 	@Override

@@ -1,10 +1,10 @@
-package com.crediteurope.recipeapp;
+package com.crediteurope.recipe;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RecipeAppApplicationTests {
+class RecipeApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -67,6 +67,7 @@ public class Recipe extends BaseEntity {
 	@ApiModelProperty(required = true, value = "Recipe is suitable for how many people.")
 	private Integer serving = null;
 
+	@Valid
 	@NotNull
 	@JsonProperty("vegetarianFlag")
 	@ApiModelProperty(required = true, value = "The recipe is suitable for vegetarians.")
