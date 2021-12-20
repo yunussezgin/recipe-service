@@ -15,7 +15,7 @@ import org.springframework.validation.annotation.Validated;
 
 import com.crediteurope.recipe.entity.Category;
 import com.crediteurope.recipe.entity.IngredientScale;
-import com.crediteurope.recipe.entity.InstructionStep;
+import com.crediteurope.recipe.entity.RecipeDirection;
 import com.crediteurope.recipe.entity.Users;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -65,7 +65,6 @@ public class RecipeCreate {
 	private Boolean vegetarianFlag = null;
 
 	@Valid
-	@NotNull
 	@ApiModelProperty(value = "Category reference.")
 	@JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_category_recipe"))
 	@JsonProperty("category")
@@ -81,11 +80,11 @@ public class RecipeCreate {
 	private Users user = null;
 
 	@Valid
-	@ApiModelProperty(value = "Instruction step reference.")
-	@JsonProperty("instructionStep")
-	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_instruction_step_recipe"))
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = InstructionStep.class)
-	private List<InstructionStep> instructionStep;
+	@ApiModelProperty(value = "Recipe direction reference.")
+	@JsonProperty("recipeDirection")
+	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_recipe_direction_recipe"))
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = RecipeDirection.class)
+	private List<RecipeDirection> recipeDirection;
 
 	@Valid
 	@ApiModelProperty(value = "Ingredient scale reference.")

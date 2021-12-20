@@ -26,14 +26,14 @@ import lombok.Setter;
 @Entity
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@ApiModel(description = "The entity defines instruction steps to prepare recipe.")
-public class InstructionStep {
+@ApiModel(description = "The entity defines recipe steps to prepare recipe.")
+public class RecipeDirection {
 
 	@Id
 	@JsonProperty("id")
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@ApiModelProperty(required = true, value = "Unique identifier of the instruction step entity.")
+	@ApiModelProperty(required = true, value = "Unique identifier of the recipe direction entity.")
 	private String id = null;
 
 	@NotNull

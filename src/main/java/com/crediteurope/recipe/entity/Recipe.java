@@ -74,7 +74,6 @@ public class Recipe extends BaseEntity {
 	private Boolean vegetarianFlag = null;
 
 	@Valid
-	@NotNull
 	@ApiModelProperty(value = "Category reference.")
 	@JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_recipe_category"))
 	@JsonProperty("category")
@@ -90,11 +89,11 @@ public class Recipe extends BaseEntity {
 	private Users user = null;
 
 	@Valid
-	@ApiModelProperty(value = "Instruction step reference.")
-	@JsonProperty("instructionStep")
-	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_instruction_step_recipe"))
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = InstructionStep.class)
-	private List<InstructionStep> instructionStep;
+	@ApiModelProperty(value = "Recipe direction reference.")
+	@JsonProperty("recipeDirection")
+	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_recipe_direction_recipe"))
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = RecipeDirection.class)
+	private List<RecipeDirection> recipeDirection;
 
 	@Valid
 	@ApiModelProperty(value = "Ingredient scale reference.")
