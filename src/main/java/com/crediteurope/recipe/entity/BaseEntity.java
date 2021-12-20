@@ -2,6 +2,7 @@ package com.crediteurope.recipe.entity;
 
 import java.time.OffsetDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 
@@ -23,10 +24,12 @@ import lombok.Setter;
 public class BaseEntity {
 
 	@ApiModelProperty(name = "createdDate", hidden = true)
+	@Column(name = "created_date", nullable = false, updatable = false)
 	@CreatedDate
 	private OffsetDateTime createdDate;
 
 	@ApiModelProperty(name = "updatedDate", hidden = true)
+	@Column(name = "updated_date")
 	@LastModifiedDate
 	private OffsetDateTime updatedDate;
 

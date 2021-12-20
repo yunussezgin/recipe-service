@@ -28,7 +28,7 @@ import lombok.Setter;
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(description = "The entity defines incredient scale to prepare recipe.")
-public class IngredientScale extends BaseEntity {
+public class IngredientScale {
 
 	@Id
 	@JsonProperty("id")

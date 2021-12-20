@@ -23,7 +23,7 @@ import lombok.Setter;
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(description = "The category defined for recipes.")
-public class Category extends BaseEntity {
+public class Category {
 
 	@Id
 	@JsonProperty("id")
