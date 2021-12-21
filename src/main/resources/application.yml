@@ -2,9 +2,10 @@ server:
   port: 8080
   max-http-header-size: 48000
   servlet:
-    context-path: /api/recipe/v1/
+    context-path: /api/recipeManagement/v1/
     encoding:
       force: true
+
 
 # ========= In Memory DB ==========
 #spring:
@@ -19,6 +20,7 @@ server:
 #    console:
 #      enabled: true
 #      path: /h2-console
+
 
 # ========= PostgreSQL DB ==========
 spring:
@@ -40,14 +42,18 @@ spring:
         order_inserts: true
   mvc:
     throw-exception-if-no-handler-found: true
-  security:
-    user:
-      name: admin
-      password: YWRtaW4=
+
+
+# ========= Login Credentials  ==========
+user:
+  name: admin
+  passord: admin
+
 
 # ========= Logging ==========
 logging:
   level:
-    root: DEBUG
+    root: ERROR
     com:
       crediteurope: DEBUG
+

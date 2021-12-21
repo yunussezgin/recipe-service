@@ -16,7 +16,8 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().httpBasic();
+		http.csrf().disable().authorizeRequests().antMatchers("/api/recipeManagement/v1/**").permitAll().anyRequest()
+				.authenticated().and().httpBasic();
 	}
 
 	@Autowired
