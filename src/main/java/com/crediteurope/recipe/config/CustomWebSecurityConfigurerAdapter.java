@@ -1,6 +1,7 @@
 package com.crediteurope.recipe.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,16 +15,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 
+	@Value("${spring.security.user.name}")
+	private String userName;
+
+	@Value("${spring.security.user.password}")
+	private String userPassword;
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers("/api/recipeManagement/v1/**").permitAll().anyRequest()
-				.authenticated().and().httpBasic();
+		http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().httpBasic();
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("admin"))
-				.authorities("ROLE_USER");
+		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser(userName)
+				.password(passwordEncoder().encode(userPassword)).authorities("ROLE_USER");
 	}
 
 	@Bean

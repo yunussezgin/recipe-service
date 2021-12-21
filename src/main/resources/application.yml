@@ -42,12 +42,10 @@ spring:
         order_inserts: true
   mvc:
     throw-exception-if-no-handler-found: true
-
-
-# ========= Login Credentials  ==========
-user:
-  name: admin
-  passord: admin
+  security:
+    user:               # ========= Login Credentials ==========
+      name: admin             # Username
+      password: admin         # Password
 
 
 # ========= Logging ==========
