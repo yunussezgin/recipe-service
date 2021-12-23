@@ -1,6 +1,6 @@
 package com.crediteurope.recipe.config;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +27,7 @@ public class SwaggerDocumentationConfig {
 	public Docket customImplementation() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
 				.apis(RequestHandlerSelectors.basePackage("com.crediteurope.recipe")).build()
-				.directModelSubstitute(OffsetDateTime.class, java.sql.Date.class)
-				.directModelSubstitute(OffsetDateTime.class, java.util.Date.class).apiInfo(apiInfo());
+				.directModelSubstitute(LocalDateTime.class, java.sql.Date.class)
+				.directModelSubstitute(LocalDateTime.class, java.util.Date.class).apiInfo(apiInfo());
 	}
 }

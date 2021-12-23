@@ -6,7 +6,7 @@ import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.validation.annotation.Validated;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -28,9 +29,10 @@ import lombok.Setter;
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(description = "The entity defines incredient scale to prepare recipe.")
-public class IngredientScale {
+public class RecipeIngredient {
 
 	@Id
+	@JsonIgnore
 	@JsonProperty("id")
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -49,11 +51,10 @@ public class IngredientScale {
 	private String unit = null;
 
 	@Valid
-	@NotNull
 	@ApiModelProperty(value = "Ingredient reference.")
-	@JoinColumn(name = "ingredient_id", foreignKey = @ForeignKey(name = "fk_ingredient_scale_ingredient"))
 	@JsonProperty("ingredient")
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Ingredient.class)
-	private Ingredient ingredient = null;
+	@JoinColumn(name = "ingredient_id", foreignKey = @ForeignKey(name = "fk_ingredient_recipe_ingredient"))
+	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Ingredient.class)
+	private Ingredient ingredient;
 
 }

@@ -1,6 +1,6 @@
 package com.crediteurope.recipe.config;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
@@ -15,7 +15,7 @@ public class JpaAuditingConfiguration {
 
 	@Bean
 	public DateTimeProvider auditingDateTimeProvider() {
-		return () -> Optional.of(OffsetDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+		return () -> Optional.of(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
 	}
 
 }

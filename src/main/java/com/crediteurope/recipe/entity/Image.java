@@ -22,20 +22,24 @@ import lombok.Setter;
 @Entity
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@ApiModel(description = "The instruction to prepare a recipe.")
-public class Instruction {
+@ApiModel(description = "Recipe image.")
+public class Image {
 
 	@Id
 	@JsonProperty("id")
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@ApiModelProperty(required = true, value = "Unique identifier of the instruction entity.")
+	@ApiModelProperty(required = true, value = "Unique identifier of the image entity.")
 	private String id = null;
 
+	@JsonProperty("name")
+	@ApiModelProperty(value = "Name of the image.")
+	private String name = null;
+	
 	@NotBlank
 	@NotNull
-	@JsonProperty("description")
-	@ApiModelProperty(required = true, value = "Description of the instruction.")
-	private String description = null;
+	@JsonProperty("url")
+	@ApiModelProperty(value = "Url of the image.")
+	private String url = null;
 
 }

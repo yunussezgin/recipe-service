@@ -7,7 +7,7 @@ import java.io.Reader;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -25,7 +25,7 @@ public class TestUtils {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE, false);
 		JavaTimeModule module = new JavaTimeModule();
-		module.addDeserializer(OffsetDateTime.class, new CustomOffsetDeserializer());
+		module.addDeserializer(LocalDateTime.class, new CustomOffsetDeserializer());
 		mapper.registerModule(module);
 		T entity = mapper.readValue(reader, type);
 		reader.close();
@@ -40,7 +40,7 @@ public class TestUtils {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE, false);
 		JavaTimeModule module = new JavaTimeModule();
-		module.addDeserializer(OffsetDateTime.class, new CustomOffsetDeserializer());
+		module.addDeserializer(LocalDateTime.class, new CustomOffsetDeserializer());
 		mapper.registerModule(module);
 		CollectionType javaType = mapper.getTypeFactory().constructCollectionType(List.class, type);
 		List<T> entity = mapper.readValue(reader, javaType);
