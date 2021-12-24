@@ -1,16 +1,12 @@
 package com.crediteurope.recipe.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.validation.annotation.Validated;
 
@@ -66,35 +62,34 @@ public class RecipeCreate {
 	@ApiModelProperty(required = true, value = "The recipe is suitable for vegetarians.")
 	private Boolean vegetarianFlag = null;
 
+	@Valid
+	@NotNull
 	@JsonProperty("category")
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_recipe_category"))
 	private Category category = null;
 
+	@Valid
+	@NotNull
 	@JsonProperty("user")
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_recipe_user"))
 	private User user = null;
 
 	@Valid
+	@NotNull
+	@Size(min = 1)
 	@ApiModelProperty(value = "Recipe instruction reference.")
 	@JsonProperty("recipeInstruction")
-	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_recipe_instruction_recipe"))
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = RecipeInstruction.class)
-	private List<RecipeInstruction> recipeInstruction;
+	private List<RecipeInstruction> recipeInstruction = new ArrayList<>();
 
 	@Valid
+	@NotNull
+	@Size(min = 1)
 	@ApiModelProperty(value = "Recipe ingredient reference.")
 	@JsonProperty("recipeIngredient")
-	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_recipe_ingredient_recipe"))
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = RecipeIngredient.class)
-	private List<RecipeIngredient> recipeIngredient;
+	private List<RecipeIngredient> recipeIngredient = new ArrayList<>();
 
 	@Valid
+	@NotNull
 	@ApiModelProperty(value = "Image reference.")
 	@JsonProperty("image")
-	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_image_recipe"))
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Image.class)
 	private List<Image> image;
 
 }
