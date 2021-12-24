@@ -3,10 +3,11 @@ package com.crediteurope.recipe.api;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.Valid;
 
 import org.springframework.validation.annotation.Validated;
@@ -15,7 +16,7 @@ import com.crediteurope.recipe.entity.Category;
 import com.crediteurope.recipe.entity.Image;
 import com.crediteurope.recipe.entity.RecipeIngredient;
 import com.crediteurope.recipe.entity.RecipeInstruction;
-import com.crediteurope.recipe.entity.Users;
+import com.crediteurope.recipe.entity.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -55,17 +56,15 @@ public class RecipeUpdate {
 	@ApiModelProperty(required = true, value = "The recipe is suitable for vegetarians.")
 	private Boolean vegetarianFlag = null;
 
-	@ApiModelProperty(value = "Category reference.")
-	@JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_category_recipe"))
 	@JsonProperty("category")
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Category.class)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_recipe_category"))
 	private Category category = null;
 
-	@ApiModelProperty(value = "User reference.")
-	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_user_recipe"))
 	@JsonProperty("user")
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Users.class)
-	private Users user = null;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_recipe_user"))
+	private User user = null;
 
 	@Valid
 	@ApiModelProperty(value = "Recipe instruction reference.")

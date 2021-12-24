@@ -4,12 +4,13 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -73,20 +74,15 @@ public class Recipe extends BaseEntity {
 	@ApiModelProperty(required = true, value = "The recipe is suitable for vegetarians.")
 	private Boolean vegetarianFlag = null;
 
-	@Valid
-	@ApiModelProperty(value = "Category reference.")
-	@JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_recipe_category"))
 	@JsonProperty("category")
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Category.class)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_recipe_category"))
 	private Category category = null;
 
-	@Valid
-	@NotNull
-	@ApiModelProperty(value = "User reference.")
-	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_recipe_user"))
 	@JsonProperty("user")
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Users.class)
-	private Users user = null;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_recipe_user"))
+	private User user = null;
 
 	@Valid
 	@ApiModelProperty(value = "Recipe instruction reference.")
@@ -101,12 +97,22 @@ public class Recipe extends BaseEntity {
 	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_recipe_ingredient_recipe"))
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = RecipeIngredient.class)
 	private List<RecipeIngredient> recipeIngredient;
-	
+
 	@Valid
 	@ApiModelProperty(value = "Image reference.")
 	@JsonProperty("image")
 	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_image_recipe"))
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Image.class)
 	private List<Image> image;
-	
+
+	public void assignParentToChilds() {
+		if (getCategory() != null) {
+			getCategory().assignParentToChilds();
+		}
+
+		if (getUser() != null) {
+			getUser().assignParentToChilds();
+		}
+	}
+
 }

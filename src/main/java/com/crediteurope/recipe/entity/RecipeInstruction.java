@@ -28,7 +28,6 @@ public class RecipeInstruction {
 
 	@Id
 	@JsonIgnore
-	@JsonProperty("id")
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@ApiModelProperty(required = true, value = "Unique identifier of the recipe direction entity.")

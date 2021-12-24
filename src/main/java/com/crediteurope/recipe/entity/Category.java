@@ -1,14 +1,21 @@
 package com.crediteurope.recipe.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.validation.annotation.Validated;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -26,7 +33,7 @@ import lombok.Setter;
 public class Category {
 
 	@Id
-	@JsonProperty("id")
+	@JsonIgnore
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@ApiModelProperty(required = true, value = "Unique identifier of the category entity.")
@@ -37,5 +44,20 @@ public class Category {
 	@JsonProperty("name")
 	@ApiModelProperty(required = true, value = "Name of the category.")
 	private String name = null;
+
+	@Valid
+	@JsonBackReference
+	@ApiModelProperty(value = "Recipe reference.")
+	@JsonProperty("recipe")
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Recipe.class)
+	private List<Recipe> recipe = null;
+
+	public void assignParentToChilds() {
+		if (getRecipe() != null) {
+			for (Recipe entity : getRecipe()) {
+				entity.setCategory(this);
+			}
+		}
+	}
 
 }
