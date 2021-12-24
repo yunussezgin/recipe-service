@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.validation.annotation.Validated;
@@ -74,17 +75,23 @@ public class Recipe extends BaseEntity {
 	@ApiModelProperty(required = true, value = "The recipe is suitable for vegetarians.")
 	private Boolean vegetarianFlag = null;
 
+	@Valid
+	@NotNull
 	@JsonProperty("category")
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_recipe_category"))
 	private Category category = null;
 
+	@Valid
+	@NotNull
 	@JsonProperty("user")
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_recipe_user"))
 	private User user = null;
 
 	@Valid
+	@NotNull
+	@Size(min = 1)
 	@ApiModelProperty(value = "Recipe instruction reference.")
 	@JsonProperty("recipeInstruction")
 	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_recipe_instruction_recipe"))
@@ -92,6 +99,8 @@ public class Recipe extends BaseEntity {
 	private List<RecipeInstruction> recipeInstruction;
 
 	@Valid
+	@NotNull
+	@Size(min = 1)
 	@ApiModelProperty(value = "Recipe ingredient reference.")
 	@JsonProperty("recipeIngredient")
 	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_recipe_ingredient_recipe"))
@@ -112,6 +121,12 @@ public class Recipe extends BaseEntity {
 
 		if (getUser() != null) {
 			getUser().assignParentToChilds();
+		}
+
+		if (getRecipeIngredient() != null) {
+			for (RecipeIngredient entity : getRecipeIngredient()) {
+				entity.assignParentToChilds();
+			}
 		}
 	}
 

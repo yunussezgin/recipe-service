@@ -1,5 +1,7 @@
 package com.crediteurope.recipe.service;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,10 +12,13 @@ import com.crediteurope.recipe.api.RecipeCreate;
 import com.crediteurope.recipe.api.RecipeUpdate;
 import com.crediteurope.recipe.data.PagingParams;
 import com.crediteurope.recipe.entity.Category;
+import com.crediteurope.recipe.entity.Ingredient;
 import com.crediteurope.recipe.entity.Recipe;
+import com.crediteurope.recipe.entity.RecipeIngredient;
 import com.crediteurope.recipe.entity.User;
 import com.crediteurope.recipe.exception.NotFoundException;
 import com.crediteurope.recipe.repository.CategoryRepository;
+import com.crediteurope.recipe.repository.IngredientRepository;
 import com.crediteurope.recipe.repository.RecipeRepository;
 import com.crediteurope.recipe.repository.UserRepository;
 import com.crediteurope.recipe.util.CommonUtils;
@@ -35,6 +40,7 @@ public class RecipeServiceImpl implements RecipeService {
 	private final RecipeRepository recipeRepository;
 	private final CategoryRepository categoryRepository;
 	private final UserRepository userRepository;
+	private final IngredientRepository ingredientRepository;
 	private final ObjectMapper objectMapper;
 	private final JsonMergePatcher jsonMergePatcher;
 
@@ -46,6 +52,7 @@ public class RecipeServiceImpl implements RecipeService {
 		BeanUtils.copyProperties(recipeCreate, recipe);
 		recipe.setUser(findOrCreateUser(recipe));
 		recipe.setCategory(findOrCreateCategory(recipe));
+		recipe.setRecipeIngredient(findOrCreateIngredient(recipe));
 		recipe.assignParentToChilds();
 		recipe = recipeRepository.save(recipe);
 
@@ -83,6 +90,7 @@ public class RecipeServiceImpl implements RecipeService {
 		Recipe recipeMerged = jsonMergePatcher.mergePatch(serializedBody, recipe);
 		recipeMerged.setUser(findOrCreateUser(recipeMerged));
 		recipeMerged.setCategory(findOrCreateCategory(recipeMerged));
+		recipeMerged.setRecipeIngredient(findOrCreateIngredient(recipeMerged));
 		recipeMerged.assignParentToChilds();
 		recipe = recipeRepository.save(recipeMerged);
 
@@ -111,6 +119,17 @@ public class RecipeServiceImpl implements RecipeService {
 		if (category == null)
 			category = categoryRepository.save(recipe.getCategory());
 		return category;
+	}
+
+	private List<RecipeIngredient> findOrCreateIngredient(Recipe recipe) {
+		List<RecipeIngredient> recipeIngredientList = recipe.getRecipeIngredient();
+		for (RecipeIngredient recipeIngredient : recipeIngredientList) {
+			Ingredient ingredient = ingredientRepository.findFirstByName(recipeIngredient.getIngredient().getName());
+			if (ingredient == null)
+				ingredient = ingredientRepository.save(recipeIngredient.getIngredient());
+			recipeIngredient.setIngredient(ingredient);
+		}
+		return recipeIngredientList;
 	}
 
 }
