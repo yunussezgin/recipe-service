@@ -42,7 +42,6 @@ public class RecipeCreate {
 	@ApiModelProperty(required = true, value = "Description of the recipe.")
 	private String description = null;
 
-	@NotNull
 	@JsonProperty("cookTime")
 	@ApiModelProperty(required = true, value = "Recipe cooking duration.")
 	private Integer cookTime = null;
@@ -57,32 +56,33 @@ public class RecipeCreate {
 	@ApiModelProperty(required = true, value = "Recipe is suitable for how many people.")
 	private Integer serving = null;
 
-	@NotNull
-	@JsonProperty("vegetarianFlag")
-	@ApiModelProperty(required = true, value = "The recipe is suitable for vegetarians.")
-	private Boolean vegetarianFlag = null;
+	@JsonProperty("isVegetarian")
+	@ApiModelProperty(value = "The recipe is suitable for vegetarians.")
+	private Boolean isVegetarian = null;
 
 	@Valid
 	@NotNull
+	@ApiModelProperty(required = true, value = "Category reference.")
 	@JsonProperty("category")
 	private Category category = null;
 
 	@Valid
 	@NotNull
+	@ApiModelProperty(required = true, value = "User reference.")
 	@JsonProperty("user")
 	private User user = null;
 
 	@Valid
 	@NotNull
 	@Size(min = 1)
-	@ApiModelProperty(value = "Recipe instruction reference.")
+	@ApiModelProperty(required = true, value = "Recipe instruction reference.")
 	@JsonProperty("recipeInstruction")
 	private List<RecipeInstruction> recipeInstruction = new ArrayList<>();
 
 	@Valid
 	@NotNull
 	@Size(min = 1)
-	@ApiModelProperty(value = "Recipe ingredient reference.")
+	@ApiModelProperty(required = true, value = "Recipe ingredient reference.")
 	@JsonProperty("recipeIngredient")
 	private List<RecipeIngredient> recipeIngredient = new ArrayList<>();
 
