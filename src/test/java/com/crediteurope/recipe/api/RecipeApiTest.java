@@ -75,7 +75,7 @@ public class RecipeApiTest {
 	@Test
 	void givenValidRecipeFullPayload_whenPostRecipe_thenCreateRecipeSuccessfully() throws Exception {
 		// given
-		RecipeCreate recipeCreate = TestUtils.entityFromJsonFile(RecipeCreate.class, TestConstant.JSON_RECIPE_FULL_PAYLOAD_CREATE_RECIPE_SUCCESSFULLY);
+		RecipeCreate recipeCreate = TestUtils.entityFromJsonFile(RecipeCreate.class, TestConstant.JSON_RECIPE_FULL_PAYLOAD1_CREATE_RECIPE_SUCCESSFULLY);
 		
 		// when
 		mvc.perform(
@@ -92,7 +92,7 @@ public class RecipeApiTest {
 		                         jsonPath("$.id").isNotEmpty(),
 		                         jsonPath("$.createdDate").isNotEmpty(),
 		                         jsonPath("$.updatedDate").isNotEmpty(),
-		                         jsonPath("$.vegetarianFlag", is(recipeCreate.getIsVegetarian())),
+		                         jsonPath("$.isVegetarian", is(recipeCreate.getIsVegetarian())),
 		                         jsonPath("$.recipeInstruction").exists(),
 		                         jsonPath("$.recipeIngredient").exists(),
 		                         jsonPath("$.category").exists(),
@@ -109,7 +109,7 @@ public class RecipeApiTest {
 	@Test
 	void givenValidRecipeUrl_whenGetRecipe_thenGetRecipeSuccessfully() throws Exception {
 		// given
-		Recipe recipe = TestUtils.entityFromJsonFile(Recipe.class, TestConstant.JSON_RECIPE_FULL_PAYLOAD_CREATE_RECIPE_SUCCESSFULLY);
+		Recipe recipe = TestUtils.entityFromJsonFile(Recipe.class, TestConstant.JSON_RECIPE_FULL_PAYLOAD2_CREATE_RECIPE_SUCCESSFULLY);
 		subResourceData.prepareSubResources(recipe);
 		recipe = recipeRepository.save(recipe);
 		
@@ -127,14 +127,13 @@ public class RecipeApiTest {
 		                         jsonPath("$..id").isNotEmpty(),
 		                         jsonPath("$..createdDate").isNotEmpty(),
 		                         jsonPath("$..updatedDate").isNotEmpty(),
-		                         jsonPath("$..vegetarianFlag", hasItem(recipe.getIsVegetarian())),
+		                         jsonPath("$..isVegetarian", hasItem(recipe.getIsVegetarian())),
 		                         jsonPath("$..recipeInstruction").exists(),
 		                         jsonPath("$..recipeIngredient").exists(),
 		                         jsonPath("$..category").exists(),
 		                         jsonPath("$..user").exists(),
 		                         jsonPath("$..name", hasItem(recipe.getName())),
 		                         jsonPath("$..description", hasItem(recipe.getDescription())),
-		                         jsonPath("$..cookTime", hasItem(recipe.getCookTime())),
 		                         jsonPath("$..prepTime", hasItem(recipe.getPrepTime())),
 		                         jsonPath("$..serving",hasItem(recipe.getServing()))
 		                ));
@@ -143,7 +142,7 @@ public class RecipeApiTest {
 	@Test
 	void givenValidRecipeId_whenRetrieveRecipe_thenRetrieveRecipeSuccessfully() throws Exception {
 		// given
-		Recipe recipe = TestUtils.entityFromJsonFile(Recipe.class, TestConstant.JSON_RECIPE_FULL_PAYLOAD_CREATE_RECIPE_SUCCESSFULLY);
+		Recipe recipe = TestUtils.entityFromJsonFile(Recipe.class, TestConstant.JSON_RECIPE_FULL_PAYLOAD3_CREATE_RECIPE_SUCCESSFULLY);
 		subResourceData.prepareSubResources(recipe);
 		recipe = recipeRepository.save(recipe);
 		
@@ -161,7 +160,7 @@ public class RecipeApiTest {
 		                         jsonPath("$..id").isNotEmpty(),
 		                         jsonPath("$..createdDate").isNotEmpty(),
 		                         jsonPath("$..updatedDate").isNotEmpty(),
-		                         jsonPath("$..vegetarianFlag", hasItem(recipe.getIsVegetarian())),
+		                         jsonPath("$..isVegetarian", hasItem(recipe.getIsVegetarian())),
 		                         jsonPath("$..recipeInstruction").exists(),
 		                         jsonPath("$..recipeIngredient").exists(),
 		                         jsonPath("$..category").exists(),
@@ -177,7 +176,7 @@ public class RecipeApiTest {
 	@Test
 	void givenValidRecipeId_whenDeleteRecipe_thenDeleteRecipeSuccessfully() throws Exception {
 		// given
-		Recipe recipe = TestUtils.entityFromJsonFile(Recipe.class, TestConstant.JSON_RECIPE_FULL_PAYLOAD_CREATE_RECIPE_SUCCESSFULLY);
+		Recipe recipe = TestUtils.entityFromJsonFile(Recipe.class, TestConstant.JSON_RECIPE_FULL_PAYLOAD1_CREATE_RECIPE_SUCCESSFULLY);
 		subResourceData.prepareSubResources(recipe);
 		recipe = recipeRepository.save(recipe);
 		
