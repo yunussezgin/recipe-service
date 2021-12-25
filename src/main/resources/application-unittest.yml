@@ -45,6 +45,7 @@ spring:
   flyway:
     enabled: false
   security:
+    enabled: false
     user:               # ========= Login Credentials ==========
       name: admin             # Username
       password: admin         # Password
