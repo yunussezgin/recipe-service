@@ -1,5 +1,6 @@
 package com.crediteurope.recipe.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -7,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -36,7 +38,6 @@ public class RecipeIngredient {
 	@ApiModelProperty(required = true, value = "Unique identifier of the ingredient scale entity.")
 	private String id = null;
 
-	@NotNull
 	@JsonProperty("amount")
 	@ApiModelProperty(required = true, value = "Numeric value in a given unit.")
 	private Float amount = null;
@@ -44,6 +45,15 @@ public class RecipeIngredient {
 	@JsonProperty("unit")
 	@ApiModelProperty(value = "Unit of used ingredients.")
 	private String unit = null;
+	
+	@JsonProperty("description")
+	@ApiModelProperty(value = "Description of the ingredient.")
+	private String description = null;
+	
+	@JsonProperty("isOptional")
+	@Column(columnDefinition = "boolean default false")
+	@ApiModelProperty(value = "The ingredient is optional for the recipe preparation.")
+	private Boolean isOptional = null;
 
 	@NotNull
 	@JsonProperty("ingredient")

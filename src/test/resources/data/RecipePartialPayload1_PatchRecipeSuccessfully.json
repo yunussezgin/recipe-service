@@ -1,0 +1,8 @@
+{
+	"name": "Difficult Meatloaf",
+	"description": "This is a very difficult and fail recipe for meatloaf. It won't take long to make at all, and it's quite good!",
+	"cookTime": "120",
+	"prepTime": "60",
+	"serving": 10,
+	"isVegetarian": true
+}

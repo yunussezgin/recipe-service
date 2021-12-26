@@ -30,34 +30,36 @@ import lombok.Setter;
 public class RecipeUpdate {
 
 	@JsonProperty("name")
-	@ApiModelProperty(required = true, value = "Name of the ingredient.")
+	@ApiModelProperty(value = "Name of the ingredient.")
 	private String name = null;
 
 	@JsonProperty("description")
-	@ApiModelProperty(required = true, value = "Description of the instruction.")
+	@ApiModelProperty(value = "Description of the instruction.")
 	private String description = null;
 
 	@JsonProperty("cookTime")
-	@ApiModelProperty(required = true, value = "Recipe cooking duration.")
+	@ApiModelProperty(value = "Recipe cooking duration.")
 	private Integer cookTime = null;
 
 	@JsonProperty("prepTime")
-	@ApiModelProperty(required = true, value = "Recipe total preparation time.")
+	@ApiModelProperty( value = "Recipe total preparation time.")
 	private Integer prepTime = null;
 
 	@JsonProperty("serving")
-	@ApiModelProperty(required = true, value = "Recipe is suitable for how many people.")
-	private Integer servings = null;
+	@ApiModelProperty(value = "Recipe is suitable for how many people.")
+	private Integer serving = null;
 
-	@JsonProperty("vegetarianFlag")
-	@ApiModelProperty(required = true, value = "The recipe is suitable for vegetarians.")
-	private Boolean vegetarianFlag = null;
+	@JsonProperty("isVegetarian")
+	@ApiModelProperty(value = "The recipe is suitable for vegetarians.")
+	private Boolean isVegetarian = null;
 
 	@Valid
+	@ApiModelProperty(value = "Category reference.")
 	@JsonProperty("category")
 	private Category category = null;
 
 	@Valid
+	@ApiModelProperty(value = "User reference.")
 	@JsonProperty("user")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private User user = null;

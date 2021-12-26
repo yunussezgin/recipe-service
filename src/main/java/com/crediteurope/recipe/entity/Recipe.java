@@ -3,6 +3,7 @@ package com.crediteurope.recipe.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -54,7 +55,6 @@ public class Recipe extends BaseEntity {
 	@ApiModelProperty(required = true, value = "Description of the recipe.")
 	private String description = null;
 
-	@NotNull
 	@JsonProperty("cookTime")
 	@ApiModelProperty(required = true, value = "Recipe cooking duration.")
 	private Integer cookTime = null;
@@ -70,13 +70,14 @@ public class Recipe extends BaseEntity {
 	private Integer serving = null;
 
 	@Valid
-	@NotNull
-	@JsonProperty("vegetarianFlag")
-	@ApiModelProperty(required = true, value = "The recipe is suitable for vegetarians.")
-	private Boolean vegetarianFlag = null;
+	@JsonProperty("isVegetarian")
+	@Column(columnDefinition = "boolean default false")
+	@ApiModelProperty(value = "The recipe is suitable for vegetarians.")
+	private Boolean isVegetarian = null;
 
 	@Valid
 	@NotNull
+	@ApiModelProperty(value = "Category reference.")
 	@JsonProperty("category")
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_recipe_category"))
@@ -84,6 +85,7 @@ public class Recipe extends BaseEntity {
 
 	@Valid
 	@NotNull
+	@ApiModelProperty(value = "User reference.")
 	@JsonProperty("user")
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_recipe_user"))

@@ -1,0 +1,74 @@
+{
+	"name": "Easy Sugar Cookies",
+	"description": "Quick and easy sugar cookies! They are really good, plain or with candies in them. My friend uses chocolate mints on top, and they're great!",
+	"cookTime": "10",
+	"prepTime": "30",
+	"serving": 48,
+	"isVegetarian": false,
+	"category": {
+		"name": "Desserts"
+	},
+	"user": {
+		"name": "ysezgin"
+	},
+	"recipeInstruction": [
+
+	],
+	"recipeIngredient": [
+		{
+			"amount": "2.75",
+			"unit": "cup",
+			"ingredient": {
+				"name": "all-purpose flour"
+			}
+		},
+		{
+			"amount": "1",
+			"unit": "teaspoon",
+			"ingredient": {
+				"name": "baking soda"
+			}
+		},
+		{
+			"amount": "0.5",
+			"unit": "teaspoon",
+			"ingredient": {
+				"name": "baking powder"
+			}
+		},
+		{
+			"amount": "1",
+			"unit": "cup",
+			"description": "softened",
+			"ingredient": {
+				"name": "butter"
+			}
+		},
+		{
+			"amount": "1.5",
+			"unit": "cup",
+			"ingredient": {
+				"name": "white sugar"
+			}
+		},
+		{
+			"amount": "1",
+			"ingredient": {
+				"name": "egg"
+			}
+		},
+		{
+			"amount": "1",
+			"unit": "teaspoon",
+			"ingredient": {
+				"name": "vanilla extract"
+			}
+		}
+	],
+	"image": [
+		{
+			"name": "cookies",
+			"url": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2021%2F12%2F07%2F9870-easy-sugar-cookies-tout-cc-2000.jpg"
+		}
+	]
+}
