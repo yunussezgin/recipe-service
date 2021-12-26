@@ -1,97 +1,96 @@
 {
-    "name": "Easy Meatloaf",
-    "description": "This is a very easy and no fail recipe for meatloaf. It won't take long to make at all, and it's quite good!",
-    "cookTime": "60",
-    "prepTime": "20",
-    "serving": 8,
-    "isVegetarian": false,
-    "category": {
-        "name": "Main Dishes"
-    },
-    "user": {
-        "name": "ysezgin"
-    },
-    "recipeInstruction": [
-        {
-            "stepNumber": 1,
-             "description": "Preheat oven to 375 degrees F (190 degrees C). In a small bowl, stir together flour, baking soda, and baking powder. Set aside."
-        },
-        {
-            "stepNumber": 2,
-            "description": "In a large bowl, cream together the butter and sugar until smooth. Beat in egg and vanilla. Gradually blend in the dry ingredients. Roll rounded teaspoonfuls of dough into balls, and place onto ungreased cookie sheets."
-        },
-        {
-            "stepNumber": 3,
-            "description": "Bake 8 to 10 minutes in the preheated oven, or until golden. Let stand on cookie sheet two minutes before removing to cool on wire racks."
-        }
-    ],
-    "recipeIngredient": [
-        {
-            "amount": "1.5",
-            "unit": "pound",
-            "ingredient": {
-                "name": "ground beef"
-            }
-        },
-        {
-            "amount": "1",
-            "ingredient": {
-                "name": "egg"
-            }
-        },
-        {
-            "amount": "1",
-            "description": "chopped",
-            "ingredient": {
-                "name": "onion"
-            }
-        },
-        {
-            "amount": "1",
-            "unit": "cup",
-            "ingredient": {
-                "name": "milk"
-            }
-        },
-        {
-            "amount": "1",
-            "unit": "cup",
-            "ingredient": {
-                "name": "dried bread crumbs"
-            }
-        },
-        {
-            "ingredient": {
-                "name": "salt and pepper to taste"
-            }
-        },
-        {
-            "amount": "2",
-            "unit": "teaspoon",
-            "ingredient": {
-                "name": "brown sugar"
-            }
-        },
-        {
-            "amount": "2",
-            "unit": "tablespoon",
-            "ingredient": {
-                "name": "prepared mustard"
-            }
-        },
-        {
-            "amount": "0.5",
-            "unit": "cup",
-            "ingredient": {
-                "name": "ketchup"
+	"name": "Easy Meatloaf",
+	"description": "This is a very easy and no fail recipe for meatloaf. It won't take long to make at all, and it's quite good!",
+	"cookTime": "60",
+	"prepTime": "20",
+	"serving": 8,
+	"isVegetarian": false,
+	"category": {
+		"name": "Main Dishes"
+	},
+	"user": {
+		"name": "ysezgin"
+	},
+	"recipeInstruction": [
+		{
+			"stepNumber": 1,
+			"description": "Preheat oven to 375 degrees F (190 degrees C). In a small bowl, stir together flour, baking soda, and baking powder. Set aside."
+		},
+		{
+			"stepNumber": 2,
+			"description": "In a large bowl, cream together the butter and sugar until smooth. Beat in egg and vanilla. Gradually blend in the dry ingredients. Roll rounded teaspoonfuls of dough into balls, and place onto ungreased cookie sheets."
+		},
+		{
+			"stepNumber": 3,
+			"description": "Bake 8 to 10 minutes in the preheated oven, or until golden. Let stand on cookie sheet two minutes before removing to cool on wire racks."
+		}
+	],
+	"recipeIngredient": [
+		{
+			"amount": "1.5",
+			"unit": "pound",
+			"ingredient": {
+				"name": "ground beef"
 			}
-        }
-    ],
-    "image": [
-        {
-            "name": "cookies",
-            "url": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F06%2F19%2FEasy-Meatloaf.jpg"
-            
-        }
-    ]
+		},
+		{
+			"amount": "1",
+			"ingredient": {
+				"name": "egg"
+			}
+		},
+		{
+			"amount": "1",
+			"description": "chopped",
+			"ingredient": {
+				"name": "onion"
+			}
+		},
+		{
+			"amount": "1",
+			"unit": "cup",
+			"ingredient": {
+				"name": "milk"
+			}
+		},
+		{
+			"amount": "1",
+			"unit": "cup",
+			"ingredient": {
+				"name": "dried bread crumbs"
+			}
+		},
+		{
+			"ingredient": {
+				"name": "salt and pepper to taste"
+			}
+		},
+		{
+			"amount": "2",
+			"unit": "teaspoon",
+			"ingredient": {
+				"name": "brown sugar"
+			}
+		},
+		{
+			"amount": "2",
+			"unit": "tablespoon",
+			"ingredient": {
+				"name": "prepared mustard"
+			}
+		},
+		{
+			"amount": "0.5",
+			"unit": "cup",
+			"ingredient": {
+				"name": "ketchup"
+			}
+		}
+	],
+	"image": [
+		{
+			"name": "cookies",
+			"url": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F06%2F19%2FEasy-Meatloaf.jpg"
+		}
+	]
 }

@@ -47,7 +47,7 @@ public class RecipeUpdate {
 
 	@JsonProperty("serving")
 	@ApiModelProperty(value = "Recipe is suitable for how many people.")
-	private Integer servings = null;
+	private Integer serving = null;
 
 	@JsonProperty("isVegetarian")
 	@ApiModelProperty(value = "The recipe is suitable for vegetarians.")
