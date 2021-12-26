@@ -87,7 +87,6 @@ public class RecipeCreate {
 	private List<RecipeIngredient> recipeIngredient = new ArrayList<>();
 
 	@Valid
-	@NotNull
 	@ApiModelProperty(value = "Image reference.")
 	@JsonProperty("image")
 	private List<Image> image;
