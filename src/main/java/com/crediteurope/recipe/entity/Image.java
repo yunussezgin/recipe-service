@@ -23,7 +23,7 @@ import lombok.Setter;
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(description = "Recipe image.")
-public class Image {
+public class Image extends BaseEntity {
 
 	@Id
 	@JsonProperty("id")
@@ -35,7 +35,7 @@ public class Image {
 	@JsonProperty("name")
 	@ApiModelProperty(value = "Name of the image.")
 	private String name = null;
-	
+
 	@NotBlank
 	@NotNull
 	@JsonProperty("url")

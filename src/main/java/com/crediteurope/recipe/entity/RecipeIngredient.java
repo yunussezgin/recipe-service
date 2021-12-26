@@ -28,7 +28,7 @@ import lombok.Setter;
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(description = "The entity defines incredient scale to prepare recipe.")
-public class RecipeIngredient {
+public class RecipeIngredient extends BaseEntity {
 
 	@Id
 	@JsonIgnore
@@ -44,11 +44,11 @@ public class RecipeIngredient {
 	@JsonProperty("unit")
 	@ApiModelProperty(value = "Unit of used ingredients.")
 	private String unit = null;
-	
+
 	@JsonProperty("description")
 	@ApiModelProperty(value = "Description of the ingredient.")
 	private String description = null;
-	
+
 	@JsonProperty("isOptional")
 	@Column(columnDefinition = "boolean default false")
 	@ApiModelProperty(value = "The ingredient is optional for the recipe preparation.")

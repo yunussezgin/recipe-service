@@ -36,8 +36,6 @@ public class RecipeCreate {
 	@ApiModelProperty(required = true, value = "Name of the recipe.")
 	private String name = null;
 
-	@NotBlank
-	@NotNull
 	@JsonProperty("description")
 	@ApiModelProperty(required = true, value = "Description of the recipe.")
 	private String description = null;
@@ -48,7 +46,7 @@ public class RecipeCreate {
 
 	@NotNull
 	@JsonProperty("prepTime")
-	@ApiModelProperty(required = true, value = "Recipe total preparation time.")
+	@ApiModelProperty(required = true, value = "Recipe preparation during.")
 	private Integer prepTime = null;
 
 	@NotNull
@@ -57,7 +55,7 @@ public class RecipeCreate {
 	private Integer serving = null;
 
 	@JsonProperty("isVegetarian")
-	@ApiModelProperty(value = "The recipe is suitable for vegetarians.")
+	@ApiModelProperty(value = "The recipe is suitable for vegetarians or not.")
 	private Boolean isVegetarian = null;
 
 	@Valid

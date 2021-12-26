@@ -42,7 +42,7 @@ public class RecipeUpdate {
 	private Integer cookTime = null;
 
 	@JsonProperty("prepTime")
-	@ApiModelProperty( value = "Recipe total preparation time.")
+	@ApiModelProperty( value = "Recipe preparation during.")
 	private Integer prepTime = null;
 
 	@JsonProperty("serving")
@@ -50,7 +50,7 @@ public class RecipeUpdate {
 	private Integer serving = null;
 
 	@JsonProperty("isVegetarian")
-	@ApiModelProperty(value = "The recipe is suitable for vegetarians.")
+	@ApiModelProperty(value = "The recipe is suitable for vegetarians or not.")
 	private Boolean isVegetarian = null;
 
 	@Valid
