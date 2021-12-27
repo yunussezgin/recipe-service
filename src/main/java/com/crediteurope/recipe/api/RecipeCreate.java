@@ -32,10 +32,12 @@ public class RecipeCreate {
 
 	@NotBlank
 	@NotNull
+	@Size(max = 100)
 	@JsonProperty("name")
 	@ApiModelProperty(required = true, value = "Name of the recipe.")
 	private String name = null;
 
+	@Size(max = 255)
 	@JsonProperty("description")
 	@ApiModelProperty(required = true, value = "Description of the recipe.")
 	private String description = null;

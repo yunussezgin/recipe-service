@@ -45,10 +45,12 @@ public class Recipe extends SubEntity {
 
 	@NotBlank
 	@NotNull
+	@Column(length = 100)
 	@JsonProperty("name")
 	@ApiModelProperty(required = true, value = "Name of the recipe.")
 	private String name = null;
 
+	@Column(length = 255)
 	@JsonProperty("description")
 	@ApiModelProperty(required = true, value = "Description of the recipe.")
 	private String description = null;

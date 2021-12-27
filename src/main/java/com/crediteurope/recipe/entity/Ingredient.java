@@ -3,6 +3,7 @@ package com.crediteurope.recipe.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -42,6 +43,8 @@ public class Ingredient extends BaseEntity {
 
 	@NotBlank
 	@NotNull
+	@Size(max = 100)
+	@Column(length = 100)
 	@JsonProperty("name")
 	@ApiModelProperty(value = "Name of the ingredient.")
 	private String name = null;

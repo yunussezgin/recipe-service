@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.validation.annotation.Validated;
@@ -41,10 +42,14 @@ public class RecipeIngredient extends BaseEntity {
 	@ApiModelProperty(required = true, value = "Numeric value in a given unit.")
 	private Float amount = null;
 
+	@Size(max = 50)
+	@Column(length = 50)
 	@JsonProperty("unit")
 	@ApiModelProperty(value = "Unit of used ingredients.")
 	private String unit = null;
 
+	@Size(max = 255)
+	@Column(length = 255)
 	@JsonProperty("description")
 	@ApiModelProperty(value = "Description of the ingredient.")
 	private String description = null;

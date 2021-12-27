@@ -1,10 +1,12 @@
 package com.crediteurope.recipe.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.validation.annotation.Validated;
@@ -32,12 +34,16 @@ public class Image extends BaseEntity {
 	@ApiModelProperty(required = true, value = "Unique identifier of the image entity.")
 	private String id = null;
 
+	@Size(max = 50)
+	@Column(length = 50)
 	@JsonProperty("name")
 	@ApiModelProperty(value = "Name of the image.")
 	private String name = null;
 
 	@NotBlank
 	@NotNull
+	@Size(max = 255)
+	@Column(length = 255)
 	@JsonProperty("url")
 	@ApiModelProperty(value = "Url of the image.")
 	private String url = null;

@@ -29,12 +29,14 @@ import lombok.Setter;
 @ApiModel(value = "Recipe_Update", description = "The entity provides to update recipe record.")
 public class RecipeUpdate {
 
+	@Size(max = 100)
 	@JsonProperty("name")
-	@ApiModelProperty(value = "Name of the ingredient.")
+	@ApiModelProperty(value = "Name of the recipe.")
 	private String name = null;
 
+	@Size(max = 255)
 	@JsonProperty("description")
-	@ApiModelProperty(value = "Description of the instruction.")
+	@ApiModelProperty(value = "Description of the recipe.")
 	private String description = null;
 
 	@JsonProperty("cookTime")
