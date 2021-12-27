@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.crediteurope</groupId>
-	<artifactId>recipe-app</artifactId>
+	<artifactId>recipe-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>recipe-app</name>
 	<description>The web application allows users to manage their favorite recipes.</description>
