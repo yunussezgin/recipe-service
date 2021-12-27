@@ -1,0 +1,423 @@
+{
+	"info": {
+		"_postman_id": "56e05643-43e2-45b2-a3bd-7d8033e02cf3",
+		"name": "Recipe API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create the recipe - Easy Sugar Cookies",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Easy Sugar Cookies\",\r\n    \"description\": \"Quick and easy sugar cookies! They are really good, plain or with candies in them. My friend uses chocolate mints on top, and they're great!\",\r\n    \"cookTime\": 10,\r\n    \"prepTime\": 20,\r\n    \"serving\": 48,\r\n    \"isVegetarian\": false,\r\n    \"category\": {\r\n        \"name\": \"Desserts\"\r\n    },\r\n    \"user\": {\r\n        \"name\": \"ysezgin\"\r\n    },\r\n    \"recipeInstruction\": [\r\n        {\r\n            \"stepNumber\": 1,\r\n            \"description\": \"Preheat oven to 375 degrees F (190 degrees C). In a small bowl, stir together flour, baking soda, and baking powder. Set aside.\"\r\n        },\r\n        {\r\n            \"stepNumber\": 2,\r\n            \"description\": \"In a large bowl, cream together the butter and sugar until smooth. Beat in egg and vanilla. Gradually blend in the dry ingredients. Roll rounded teaspoonfuls of dough into balls, and place onto ungreased cookie sheets.\"\r\n        },\r\n        {\r\n            \"stepNumber\": 3,\r\n            \"description\": \"Bake 8 to 10 minutes in the preheated oven, or until golden. Let stand on cookie sheet two minutes before removing to cool on wire racks.\"\r\n        }\r\n    ],\r\n    \"recipeIngredient\": [\r\n        {\r\n            \"amount\": 2.75,\r\n            \"unit\": \"cup\",\r\n            \"ingredient\": {\r\n                \"name\": \"all-purpose flour\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1,\r\n            \"unit\": \"teaspoon\",\r\n            \"ingredient\": {\r\n                \"name\": \"baking soda\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 0.5,\r\n            \"unit\": \"teaspoon\",\r\n            \"ingredient\": {\r\n                \"name\": \"baking powder\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1,\r\n            \"unit\": \"cup\",\r\n            \"description\": \"softened\",\r\n            \"ingredient\": {\r\n                \"name\": \"butter\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1.5,\r\n            \"unit\": \"cup\",\r\n            \"ingredient\": {\r\n                \"name\": \"white sugar\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1,\r\n            \"ingredient\": {\r\n                \"name\": \"egg\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1,\r\n            \"unit\": \"teaspoon\",\r\n            \"ingredient\": {\r\n                \"name\": \"vanilla extract\"\r\n            }\r\n        }\r\n    ],\r\n    \"image\": [\r\n        {\r\n            \"name\": \"cookies\",\r\n            \"url\": \"https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F6026039.jpg&w=596&h=596&c=sc&poi=face&q=85\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/recipeManagement/v1/recipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"recipeManagement",
+						"v1",
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create the recipe - Easy Meatloaf",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Easy Meatloaf\",\r\n    \"description\": \"This is a very easy and no fail recipe for meatloaf. It won't take long to make at all, and it's quite good!\",\r\n    \"cookTime\": 60,\r\n    \"prepTime\": 20,\r\n    \"serving\": 8,\r\n    \"isVegetarian\": false,\r\n    \"category\": {\r\n        \"name\": \"Main Dishes\"\r\n    },\r\n    \"user\": {\r\n        \"name\": \"ysezgin\"\r\n    },\r\n    \"recipeInstruction\": [\r\n        {\r\n            \"stepNumber\": 1,\r\n            \"description\": \"Preheat oven to 375 degrees F (190 degrees C). In a small bowl, stir together flour, baking soda, and baking powder. Set aside.\"\r\n        },\r\n        {\r\n            \"stepNumber\": 2,\r\n            \"description\": \"In a large bowl, cream together the butter and sugar until smooth. Beat in egg and vanilla. Gradually blend in the dry ingredients. Roll rounded teaspoonfuls of dough into balls, and place onto ungreased cookie sheets.\"\r\n        },\r\n        {\r\n            \"stepNumber\": 3,\r\n            \"description\": \"Bake 8 to 10 minutes in the preheated oven, or until golden. Let stand on cookie sheet two minutes before removing to cool on wire racks.\"\r\n        }\r\n    ],\r\n    \"recipeIngredient\": [\r\n        {\r\n            \"amount\": 1.5,\r\n            \"unit\": \"pound\",\r\n            \"ingredient\": {\r\n                \"name\": \"ground beef\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1,\r\n            \"ingredient\": {\r\n                \"name\": \"egg\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1,\r\n            \"description\": \"chopped\",\r\n            \"ingredient\": {\r\n                \"name\": \"onion\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1,\r\n            \"unit\": \"cup\",\r\n            \"ingredient\": {\r\n                \"name\": \"milk\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1,\r\n            \"unit\": \"cup\",\r\n            \"ingredient\": {\r\n                \"name\": \"dried bread crumbs\"\r\n            }\r\n        },\r\n        {\r\n            \"ingredient\": {\r\n                \"name\": \"salt and pepper to taste\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 2,\r\n            \"unit\": \"teaspoon\",\r\n            \"ingredient\": {\r\n                \"name\": \"brown sugar\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 2,\r\n            \"unit\": \"tablespoon\",\r\n            \"ingredient\": {\r\n                \"name\": \"prepared mustard\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 0.5,\r\n            \"unit\": \"cup\",\r\n            \"ingredient\": {\r\n                \"name\": \"ketchup\"\r\n            }\r\n        }\r\n    ],\r\n    \"image\": [\r\n        {\r\n            \"name\": \"meatloaf\",\r\n            \"url\": \"https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F06%2F19%2FEasy-Meatloaf.jpg\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/recipeManagement/v1/recipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"recipeManagement",
+						"v1",
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create the recipe - Guacamole",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Guacamole\",\r\n    \"description\": \"You can make this avocado salad smooth or chunky depending on your tastes.\",\r\n    \"prepTime\": 10,\r\n    \"serving\": 4,\r\n    \"isVegetarian\": true,\r\n    \"category\": {\r\n        \"name\": \"Appetizers and Snacks\"\r\n    },\r\n    \"user\": {\r\n        \"name\": \"ysezgin\"\r\n    },\r\n    \"recipeInstruction\": [\r\n        {\r\n            \"stepNumber\": 1,\r\n            \"description\": \"In a medium bowl, mash together the avocados, lime juice, and salt. Mix in onion, cilantro, tomatoes, and garlic. Stir in cayenne pepper. Refrigerate 1 hour for best flavor, or serve immediately.\"\r\n        }\r\n    ],\r\n    \"recipeIngredient\": [\r\n        {\r\n            \"amount\": 3,\r\n            \"description\": \"peeled, pitted, and mashed\",\r\n            \"ingredient\": {\r\n                \"name\": \"avocado\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1,\r\n            \"description\": \"juiced\",\r\n            \"ingredient\": {\r\n                \"name\": \"lime\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1,\r\n            \"unit\": \"teaspoon\",\r\n            \"ingredient\": {\r\n                \"name\": \"salt\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 0.5,\r\n            \"unit\": \"cup\",\r\n            \"description\": \"diced\",\r\n            \"ingredient\": {\r\n                \"name\": \"onion\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 3,\r\n            \"unit\": \"teaspoon\",\r\n            \"description\": \"chopped\",\r\n            \"ingredient\": {\r\n                \"name\": \"fresh cilantro\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 2,\r\n            \"description\": \"diced\",\r\n            \"ingredient\": {\r\n                \"name\": \"roma tomato\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1,\r\n            \"unit\": \"teaspoon\",\r\n            \"description\": \"minced\",\r\n            \"ingredient\": {\r\n                \"name\": \"garlic\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1,\r\n            \"unit\": \"pinch\",\r\n            \"description\": \"ground\",\r\n            \"isOptional\": true,\r\n            \"ingredient\": {\r\n                \"name\": \"cayenne pepper\"\r\n            }\r\n        }\r\n    ],\r\n    \"image\": [\r\n        {\r\n            \"name\": \"guacamole\",\r\n            \"url\": \"https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2015%2F08%2F4521556.jpg\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/recipeManagement/v1/recipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"recipeManagement",
+						"v1",
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List recipes with filters",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/recipeManagement/v1/recipe?user.name=ysezgin&recipeIngredient.ingredient.name=baking soda&category.name=Desserts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"recipeManagement",
+						"v1",
+						"recipe"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Guacamole",
+							"disabled": true
+						},
+						{
+							"key": "user.name",
+							"value": "ysezgin"
+						},
+						{
+							"key": "isVegetarian",
+							"value": "false",
+							"disabled": true
+						},
+						{
+							"key": "recipeIngredient.ingredient.name",
+							"value": "baking soda"
+						},
+						{
+							"key": "category.name",
+							"value": "Desserts"
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve the recipe",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/recipeManagement/v1/recipe/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"recipeManagement",
+						"v1",
+						"recipe",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "f7696df4-3ce1-414f-b792-6c265e5f6491"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update the recipe 1",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Difficult Sugar Cookies\",\r\n    \"recipeIngredient\": [\r\n        {\r\n            \"amount\": 3,\r\n            \"unit\": \"cup\",\r\n            \"ingredient\": {\r\n                \"name\": \"all-purpose flour\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1.0,\r\n            \"unit\": \"teaspoon\",\r\n            \"ingredient\": {\r\n                \"name\": \"baking soda\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 0.5,\r\n            \"unit\": \"teaspoon\",\r\n            \"ingredient\": {\r\n                \"name\": \"baking powder\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1.0,\r\n            \"unit\": \"cup\",\r\n            \"ingredient\": {\r\n                \"name\": \"butter, softened\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1.5,\r\n            \"unit\": \"cup\",\r\n            \"ingredient\": {\r\n                \"name\": \"white sugar\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1.0,\r\n            \"ingredient\": {\r\n                \"name\": \"egg\"\r\n            }\r\n        },\r\n        {\r\n            \"amount\": 1.0,\r\n            \"unit\": \"teaspoon\",\r\n            \"ingredient\": {\r\n                \"name\": \"vanilla extract\"\r\n            }\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/recipeManagement/v1/recipe/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"recipeManagement",
+						"v1",
+						"recipe",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "f7696df4-3ce1-414f-b792-6c265e5f6491"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update the recipe 2",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Difficult Sugar Cookies\",\r\n    \"recipeInstruction\": [\r\n        {\r\n            \"stepNumber\": 1,\r\n            \"description\": \"Preheat oven to 375 degrees F (190 degrees C). In a small bowl, stir together flour, baking soda, and baking powder. Set aside.\"\r\n        },\r\n        {\r\n            \"stepNumber\": 2,\r\n            \"description\": \"In a large bowl, cream together the butter and sugar until smooth. Beat in egg and vanilla. Gradually blend in the dry ingredients. Roll rounded teaspoonfuls of dough into balls, and place onto ungreased cookie sheets.\"\r\n        },\r\n        {\r\n            \"stepNumber\": 3,\r\n            \"description\": \"Bake 8 to 10 minutes in the preheated oven, or until golden. Let stand on cookie sheet two minutes before removing to cool on wire racks.\"\r\n        },\r\n        {\r\n            \"stepNumber\": 4,\r\n            \"description\": \"Enjoy your meal!\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/recipeManagement/v1/recipe/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"recipeManagement",
+						"v1",
+						"recipe",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "f7696df4-3ce1-414f-b792-6c265e5f6491"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete the recipe",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/recipeManagement/v1/recipe/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"recipeManagement",
+						"v1",
+						"recipe",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "f7696df4-3ce1-414f-b792-6c265e5f6491"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
