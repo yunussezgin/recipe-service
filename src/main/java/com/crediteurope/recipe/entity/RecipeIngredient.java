@@ -1,19 +1,20 @@
 package com.crediteurope.recipe.entity;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.validation.annotation.Validated;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -28,32 +29,46 @@ import lombok.Setter;
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(description = "The entity defines incredient scale to prepare recipe.")
-public class IngredientScale {
+public class RecipeIngredient extends BaseEntity {
 
 	@Id
-	@JsonProperty("id")
+	@JsonIgnore
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@ApiModelProperty(required = true, value = "Unique identifier of the ingredient scale entity.")
 	private String id = null;
 
-	@NotNull
 	@JsonProperty("amount")
 	@ApiModelProperty(required = true, value = "Numeric value in a given unit.")
 	private Float amount = null;
 
-	@NotBlank
-	@NotNull
+	@Size(max = 50)
+	@Column(length = 50)
 	@JsonProperty("unit")
 	@ApiModelProperty(value = "Unit of used ingredients.")
 	private String unit = null;
 
-	@Valid
+	@Size(max = 255)
+	@Column(length = 255)
+	@JsonProperty("description")
+	@ApiModelProperty(value = "Description of the ingredient.")
+	private String description = null;
+
+	@JsonProperty("isOptional")
+	@Column(columnDefinition = "boolean default false")
+	@ApiModelProperty(value = "The ingredient is optional for the recipe preparation.")
+	private Boolean isOptional = null;
+
 	@NotNull
-	@ApiModelProperty(value = "Ingredient reference.")
-	@JoinColumn(name = "ingredient_id", foreignKey = @ForeignKey(name = "fk_ingredient_scale_ingredient"))
 	@JsonProperty("ingredient")
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Ingredient.class)
-	private Ingredient ingredient = null;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ingredient_id", foreignKey = @ForeignKey(name = "fk_ingredient_recipe_ingredient"))
+	private Ingredient ingredient;
+
+	public void assignParentToChilds() {
+		if (getIngredient() != null) {
+			getIngredient().assignParentToChilds();
+		}
+	}
 
 }

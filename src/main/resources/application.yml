@@ -8,44 +8,60 @@ server:
 
 
 # ========= In Memory DB ==========
-#spring:
-#  datasource:
-#    url: jdbc:h2:mem:testdb
-#    driverClassName: org.h2.Driver
-#    username: test
-#    password: test
-#  jpa:
-#    database-platform: org.hibernate.dialect.H2Dialect
-#  h2:
-#    console:
-#      enabled: true
-#      path: /h2-console
-
-
-# ========= PostgreSQL DB ==========
 spring:
   datasource:
-    driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/recipe?useUnicode=yes&characterEncoding=UTF-8
-    platform: platform
-    username: postgres
-    password: 12345
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: admin
+    password: admin
   jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
-    generate-ddl: true
-    database: POSTGRESQL
-    properties:
-      hibernate:
-        jdbc:
-          batch_size: 400
-        order_inserts: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
   mvc:
     throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: true
   security:
+    enabled: true
     user:               # ========= Login Credentials ==========
       name: admin             # Username
       password: admin         # Password
+
+
+# ========= PostgreSQL DB ==========
+#spring:
+#  datasource:
+#    driverClassName: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:5432/recipe?useUnicode=yes&characterEncoding=UTF-8
+#    platform: platform
+#    username: postgres
+#    password: 12345
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    generate-ddl: true
+#    database: POSTGRESQL
+#    properties:
+#      hibernate:
+#        jdbc:
+#          batch_size: 400
+#        order_inserts: true
+#  mvc:
+#    throw-exception-if-no-handler-found: true
+#  web:
+#    resources:
+#      add-mappings: true
+#  security:
+#    enabled: true
+#    user:               # ========= Login Credentials ==========
+#      name: admin             # Username
+#      password: admin         # Password
 
 
 # ========= Logging ==========

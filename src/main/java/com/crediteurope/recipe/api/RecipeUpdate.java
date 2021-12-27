@@ -2,19 +2,18 @@ package com.crediteurope.recipe.api;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ForeignKey;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 
 import org.springframework.validation.annotation.Validated;
 
 import com.crediteurope.recipe.entity.Category;
-import com.crediteurope.recipe.entity.IngredientScale;
-import com.crediteurope.recipe.entity.RecipeDirection;
-import com.crediteurope.recipe.entity.Users;
+import com.crediteurope.recipe.entity.Image;
+import com.crediteurope.recipe.entity.RecipeIngredient;
+import com.crediteurope.recipe.entity.RecipeInstruction;
+import com.crediteurope.recipe.entity.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -30,54 +29,58 @@ import lombok.Setter;
 @ApiModel(value = "Recipe_Update", description = "The entity provides to update recipe record.")
 public class RecipeUpdate {
 
+	@Size(max = 100)
 	@JsonProperty("name")
-	@ApiModelProperty(required = true, value = "Name of the ingredient.")
+	@ApiModelProperty(value = "Name of the recipe.")
 	private String name = null;
 
+	@Size(max = 255)
 	@JsonProperty("description")
-	@ApiModelProperty(required = true, value = "Description of the instruction.")
+	@ApiModelProperty(value = "Description of the recipe.")
 	private String description = null;
 
 	@JsonProperty("cookTime")
-	@ApiModelProperty(required = true, value = "Recipe cooking duration.")
+	@ApiModelProperty(value = "Recipe cooking duration.")
 	private Integer cookTime = null;
 
 	@JsonProperty("prepTime")
-	@ApiModelProperty(required = true, value = "Recipe total preparation time.")
+	@ApiModelProperty( value = "Recipe preparation during.")
 	private Integer prepTime = null;
 
 	@JsonProperty("serving")
-	@ApiModelProperty(required = true, value = "Recipe is suitable for how many people.")
-	private Integer servings = null;
+	@ApiModelProperty(value = "Recipe is suitable for how many people.")
+	private Integer serving = null;
 
-	@JsonProperty("vegetarianFlag")
-	@ApiModelProperty(required = true, value = "The recipe is suitable for vegetarians.")
-	private Boolean vegetarianFlag = null;
+	@JsonProperty("isVegetarian")
+	@ApiModelProperty(value = "The recipe is suitable for vegetarians or not.")
+	private Boolean isVegetarian = null;
 
+	@Valid
 	@ApiModelProperty(value = "Category reference.")
-	@JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_category_recipe"))
 	@JsonProperty("category")
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Category.class)
 	private Category category = null;
 
+	@Valid
 	@ApiModelProperty(value = "User reference.")
-	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_user_recipe"))
 	@JsonProperty("user")
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Users.class)
-	private Users user = null;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private User user = null;
 
 	@Valid
-	@ApiModelProperty(value = "Recipe direction reference.")
-	@JsonProperty("recipeDirection")
-	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_recipe_direction_recipe"))
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = RecipeDirection.class)
-	private List<RecipeDirection> recipeDirection;
+	@Size(min = 1)
+	@ApiModelProperty(value = "Recipe instruction reference.")
+	@JsonProperty("recipeInstruction")
+	private List<RecipeInstruction> recipeInstruction;
 
 	@Valid
-	@ApiModelProperty(value = "Ingredient scale reference.")
-	@JsonProperty("ingredientScale")
-	@JoinColumn(name = "recipe_id", foreignKey = @ForeignKey(name = "fk_ingredient_scale_recipe"))
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = IngredientScale.class)
-	private List<IngredientScale> ingredientScale;
+	@Size(min = 1)
+	@ApiModelProperty(value = "Recipe ingredient reference.")
+	@JsonProperty("recipeIngredient")
+	private List<RecipeIngredient> recipeIngredient;
+
+	@Valid
+	@ApiModelProperty(value = "Image reference.")
+	@JsonProperty("image")
+	private List<Image> image;
 
 }

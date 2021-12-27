@@ -15,6 +15,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+	@Value("${spring.security.enabled:true}")
+	private Boolean enabled;
+
 	@Value("${spring.security.user.name}")
 	private String userName;
 
@@ -23,13 +26,19 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().httpBasic();
+		if (enabled)
+			http.authorizeRequests().antMatchers("/h2-console/**").permitAll().anyRequest().authenticated().and().httpBasic();
+		else
+			http.authorizeRequests().antMatchers("/").permitAll().and().authorizeRequests().antMatchers("/console/**").permitAll();
+		
+		http.csrf().disable();
+		http.headers().frameOptions().disable();
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser(userName)
-				.password(passwordEncoder().encode(userPassword)).authorities("ROLE_USER");
+				.password(passwordEncoder().encode(userPassword)).authorities("USER");
 	}
 
 	@Bean
