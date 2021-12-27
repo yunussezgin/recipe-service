@@ -32,7 +32,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.crediteurope.recipe.RecipeApplication;
 import com.crediteurope.recipe.databuilder.SubResourceData;
+import com.crediteurope.recipe.entity.Category;
 import com.crediteurope.recipe.entity.Recipe;
+import com.crediteurope.recipe.entity.User;
 import com.crediteurope.recipe.repository.CategoryRepository;
 import com.crediteurope.recipe.repository.IngredientRepository;
 import com.crediteurope.recipe.repository.RecipeRepository;
@@ -424,6 +426,7 @@ public class RecipeApiTest {
 		// given
 		Recipe recipe = TestUtils.entityFromJsonFile(Recipe.class, TestConstant.JSON_RECIPE_FULL_PAYLOAD1_CREATE_RECIPE_SUCCESSFULLY);
 		subResourceData.prepareSubResources(recipe);
+		recipe.assignParentToChilds();
 		List<Recipe> recipeList = new ArrayList<>();
 		
 		for(int i = 0; i < 10; i++) {	
@@ -449,6 +452,7 @@ public class RecipeApiTest {
                                  jsonPath("$", notNullValue()),
                                  jsonPath("$.*", hasSize(1)),
 		                         jsonPath("$..id").isNotEmpty(),
+		                         jsonPath("$..name",  hasItem(nameQueryParam)),
 		                         jsonPath("$..createdDate").isNotEmpty(),
 		                         jsonPath("$..updatedDate").isNotEmpty(),
 		                         jsonPath("$..isVegetarian").isNotEmpty(),
@@ -456,7 +460,108 @@ public class RecipeApiTest {
 		                         jsonPath("$..recipeIngredient").exists(),
 		                         jsonPath("$..category").exists(),
 		                         jsonPath("$..user").exists(),
-		                         jsonPath("$..name").isNotEmpty(),
+		                         jsonPath("$..description").isNotEmpty(),
+		                         jsonPath("$..cookTime").isNotEmpty(),
+		                         jsonPath("$..prepTime").isNotEmpty(),
+		                         jsonPath("$..serving").isNotEmpty()
+                        ));
+		
+    }
+    
+    @Test
+    void givenValidGetRequest_whenGetRecipeListWithCategoryQueryParam_thenGetRecipeSuccessfully() throws Exception {
+		// given
+		Recipe recipe = TestUtils.entityFromJsonFile(Recipe.class, TestConstant.JSON_RECIPE_FULL_PAYLOAD1_CREATE_RECIPE_SUCCESSFULLY);
+		subResourceData.prepareSubResources(recipe);
+		List<Recipe> recipeList = new ArrayList<>();
+		
+		for(int i = 0; i < 10; i++) {	
+			Recipe recipeNew = new Recipe();
+			BeanUtils.copyProperties(recipe, recipeNew);
+			Category category = new Category();
+			category.setName("Category" + i);
+			recipeNew.setCategory(category);
+			subResourceData.prepareSubResourceForCategory(recipeNew);
+			recipeNew.assignParentToChilds();
+			recipeList.add(recipeNew);
+		}
+		recipeRepository.saveAll(recipeList);
+		
+		String categoryQueryParam = "Category1";
+
+        // when
+        mvc.perform(
+                 get(TestConstant.GET_RECIPE_PATH + "?category.name=" + categoryQueryParam)
+                        .header("Accept", TestConstant.JSON_ACCEPT_HEADER)
+                        .header("Content-Type", TestConstant.JSON_CONTENT_TYPE_HEADER))
+
+                // then
+                .andExpect(
+                        matchAll(
+                                 status().is(HttpStatus.OK.value()),
+                                 jsonPath("$", notNullValue()),
+                                 jsonPath("$.*", hasSize(1)),
+		                         jsonPath("$..id").isNotEmpty(),
+		                         jsonPath("$..category.name", hasItem(categoryQueryParam)),
+		                         jsonPath("$..createdDate").isNotEmpty(),
+		                         jsonPath("$..updatedDate").isNotEmpty(),
+		                         jsonPath("$..isVegetarian").isNotEmpty(),
+		                         jsonPath("$..recipeInstruction").exists(),
+		                         jsonPath("$..recipeIngredient").exists(),
+		                         jsonPath("$..category").exists(),
+		                         jsonPath("$..user").exists(),
+		                         jsonPath("$..name").exists(),
+		                         jsonPath("$..description").isNotEmpty(),
+		                         jsonPath("$..cookTime").isNotEmpty(),
+		                         jsonPath("$..prepTime").isNotEmpty(),
+		                         jsonPath("$..serving").isNotEmpty()
+                        ));
+		
+    }
+    
+    @Test
+    void givenValidGetRequest_whenGetRecipeListWithUserQueryParam_thenGetRecipeSuccessfully() throws Exception {
+		// given
+		Recipe recipe = TestUtils.entityFromJsonFile(Recipe.class, TestConstant.JSON_RECIPE_FULL_PAYLOAD1_CREATE_RECIPE_SUCCESSFULLY);
+		subResourceData.prepareSubResources(recipe);
+		List<Recipe> recipeList = new ArrayList<>();
+		
+		for(int i = 0; i < 10; i++) {	
+			Recipe recipeNew = new Recipe();
+			BeanUtils.copyProperties(recipe, recipeNew);
+			User user = new User();
+			user.setName("User" + i);
+			recipeNew.setUser(user);
+			subResourceData.prepareSubResourceForUser(recipeNew);
+			recipeNew.assignParentToChilds();
+			recipeList.add(recipeNew);
+		}
+		recipeRepository.saveAll(recipeList);
+		
+		String userQueryParam = "User1";
+
+        // when
+        mvc.perform(
+                 get(TestConstant.GET_RECIPE_PATH + "?user.name=" + userQueryParam)
+                        .header("Accept", TestConstant.JSON_ACCEPT_HEADER)
+                        .header("Content-Type", TestConstant.JSON_CONTENT_TYPE_HEADER))
+
+                // then
+                .andExpect(
+                        matchAll(
+                                 status().is(HttpStatus.OK.value()),
+                                 jsonPath("$", notNullValue()),
+                                 jsonPath("$.*", hasSize(1)),
+		                         jsonPath("$..id").isNotEmpty(),
+		                         jsonPath("$..user.name", hasItem(userQueryParam)),
+		                         jsonPath("$..category").exists(),
+		                         jsonPath("$..createdDate").isNotEmpty(),
+		                         jsonPath("$..updatedDate").isNotEmpty(),
+		                         jsonPath("$..isVegetarian").isNotEmpty(),
+		                         jsonPath("$..recipeInstruction").exists(),
+		                         jsonPath("$..recipeIngredient").exists(),
+		                         jsonPath("$..category").exists(),
+		                         jsonPath("$..name").exists(),
 		                         jsonPath("$..description").isNotEmpty(),
 		                         jsonPath("$..cookTime").isNotEmpty(),
 		                         jsonPath("$..prepTime").isNotEmpty(),

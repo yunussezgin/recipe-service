@@ -47,7 +47,7 @@ public interface RecipeApi {
 
 	@ApiOperation(value = "Deletes a Recipe", nickname = "deleteRecipe", notes = "This operation deletes a Recipe entity.", tags = {
 			"recipe", })
-	@ApiResponses(value = { @ApiResponse(code = 204, message = "Deleted"),
+	@ApiResponses(value = { @ApiResponse(code = 204, message = "Deleted",  response = Error.class),
 			@ApiResponse(code = 400, message = "Bad Request", response = Error.class),
 			@ApiResponse(code = 401, message = "Unauthorized", response = Error.class),
 			@ApiResponse(code = 403, message = "Forbidden", response = Error.class),
@@ -55,8 +55,7 @@ public interface RecipeApi {
 			@ApiResponse(code = 405, message = "Method Not allowed", response = Error.class),
 			@ApiResponse(code = 409, message = "Conflict", response = Error.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
-	@RequestMapping(value = "/recipe/{id}", produces = { "application/json;charset=utf-8" }, consumes = {
-			"application/json;charset=utf-8" }, method = RequestMethod.DELETE)
+	@RequestMapping(value = "/recipe/{id}", produces = { "application/json;charset=utf-8" }, method = RequestMethod.DELETE)
 	ResponseEntity<Void> deleteRecipe(
 			@ApiParam(value = "Identifier of the Recipe", required = true) @PathVariable("id") String id)
 			throws NotFoundException;

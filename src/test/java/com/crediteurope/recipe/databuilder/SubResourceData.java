@@ -17,7 +17,14 @@ public class SubResourceData {
 		recipe.setUser(subResourceService.findOrCreateUser(recipe));
 		recipe.setCategory(subResourceService.findOrCreateCategory(recipe));
 		recipe.setRecipeIngredient(subResourceService.findOrCreateIngredient(recipe));
-		recipe.assignParentToChilds();
+	}
+
+	public void prepareSubResourceForCategory(Recipe recipe) {
+		recipe.setCategory(subResourceService.findOrCreateCategory(recipe));
+	}
+
+	public void prepareSubResourceForUser(Recipe recipe) {
+		recipe.setUser(subResourceService.findOrCreateUser(recipe));
 	}
 
 }

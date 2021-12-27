@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.validation.annotation.Validated;
@@ -29,7 +29,7 @@ import lombok.Setter;
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(description = "The entity defines incredient scale to prepare recipe.")
-public class RecipeIngredient {
+public class RecipeIngredient extends BaseEntity {
 
 	@Id
 	@JsonIgnore
@@ -42,14 +42,18 @@ public class RecipeIngredient {
 	@ApiModelProperty(required = true, value = "Numeric value in a given unit.")
 	private Float amount = null;
 
+	@Size(max = 50)
+	@Column(length = 50)
 	@JsonProperty("unit")
 	@ApiModelProperty(value = "Unit of used ingredients.")
 	private String unit = null;
-	
+
+	@Size(max = 255)
+	@Column(length = 255)
 	@JsonProperty("description")
 	@ApiModelProperty(value = "Description of the ingredient.")
 	private String description = null;
-	
+
 	@JsonProperty("isOptional")
 	@Column(columnDefinition = "boolean default false")
 	@ApiModelProperty(value = "The ingredient is optional for the recipe preparation.")

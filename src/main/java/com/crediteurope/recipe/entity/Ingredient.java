@@ -3,6 +3,7 @@ package com.crediteurope.recipe.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -31,7 +32,7 @@ import lombok.Setter;
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(description = "The ingredient to prepare a recipe.")
-public class Ingredient {
+public class Ingredient extends BaseEntity {
 
 	@Id
 	@JsonIgnore
@@ -42,6 +43,8 @@ public class Ingredient {
 
 	@NotBlank
 	@NotNull
+	@Size(max = 100)
+	@Column(length = 100)
 	@JsonProperty("name")
 	@ApiModelProperty(value = "Name of the ingredient.")
 	private String name = null;

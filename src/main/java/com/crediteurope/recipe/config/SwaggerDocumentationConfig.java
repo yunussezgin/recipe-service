@@ -19,7 +19,7 @@ public class SwaggerDocumentationConfig {
 
 	ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("Recipe Service")
-				.description("Recipe service allows users to manage their favourite recipes").version("v1")
+				.description("Recipe service allows users to manage your favourite recipes").version("v1")
 				.contact(new Contact("Yunus Sezgin", "http://www.yunussezgin.com/", "yunussezgin8@gmail.com")).build();
 	}
 

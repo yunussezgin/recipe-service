@@ -29,12 +29,14 @@ import lombok.Setter;
 @ApiModel(value = "Recipe_Update", description = "The entity provides to update recipe record.")
 public class RecipeUpdate {
 
+	@Size(max = 100)
 	@JsonProperty("name")
-	@ApiModelProperty(value = "Name of the ingredient.")
+	@ApiModelProperty(value = "Name of the recipe.")
 	private String name = null;
 
+	@Size(max = 255)
 	@JsonProperty("description")
-	@ApiModelProperty(value = "Description of the instruction.")
+	@ApiModelProperty(value = "Description of the recipe.")
 	private String description = null;
 
 	@JsonProperty("cookTime")
@@ -42,7 +44,7 @@ public class RecipeUpdate {
 	private Integer cookTime = null;
 
 	@JsonProperty("prepTime")
-	@ApiModelProperty( value = "Recipe total preparation time.")
+	@ApiModelProperty( value = "Recipe preparation during.")
 	private Integer prepTime = null;
 
 	@JsonProperty("serving")
@@ -50,7 +52,7 @@ public class RecipeUpdate {
 	private Integer serving = null;
 
 	@JsonProperty("isVegetarian")
-	@ApiModelProperty(value = "The recipe is suitable for vegetarians.")
+	@ApiModelProperty(value = "The recipe is suitable for vegetarians or not.")
 	private Boolean isVegetarian = null;
 
 	@Valid

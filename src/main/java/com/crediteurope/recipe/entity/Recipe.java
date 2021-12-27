@@ -34,7 +34,7 @@ import lombok.Setter;
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(description = "A user defines the recipe.")
-public class Recipe extends BaseEntity {
+public class Recipe extends SubEntity {
 
 	@Id
 	@JsonProperty("id")
@@ -45,12 +45,12 @@ public class Recipe extends BaseEntity {
 
 	@NotBlank
 	@NotNull
+	@Column(length = 100)
 	@JsonProperty("name")
 	@ApiModelProperty(required = true, value = "Name of the recipe.")
 	private String name = null;
 
-	@NotBlank
-	@NotNull
+	@Column(length = 255)
 	@JsonProperty("description")
 	@ApiModelProperty(required = true, value = "Description of the recipe.")
 	private String description = null;
@@ -61,7 +61,7 @@ public class Recipe extends BaseEntity {
 
 	@NotNull
 	@JsonProperty("prepTime")
-	@ApiModelProperty(required = true, value = "Recipe total preparation time.")
+	@ApiModelProperty(required = true, value = "Recipe preparation during.")
 	private Integer prepTime = null;
 
 	@NotNull
@@ -72,7 +72,7 @@ public class Recipe extends BaseEntity {
 	@Valid
 	@JsonProperty("isVegetarian")
 	@Column(columnDefinition = "boolean default false")
-	@ApiModelProperty(value = "The recipe is suitable for vegetarians.")
+	@ApiModelProperty(value = "The recipe is suitable for vegetarians or not.")
 	private Boolean isVegetarian = null;
 
 	@Valid

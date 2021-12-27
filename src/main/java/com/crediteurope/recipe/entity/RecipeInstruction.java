@@ -1,10 +1,12 @@
 package com.crediteurope.recipe.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.validation.annotation.Validated;
@@ -24,7 +26,7 @@ import lombok.Setter;
 @Validated
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(description = "The entity defines recipe steps to prepare recipe.")
-public class RecipeInstruction {
+public class RecipeInstruction extends BaseEntity {
 
 	@Id
 	@JsonIgnore
@@ -40,6 +42,8 @@ public class RecipeInstruction {
 
 	@NotBlank
 	@NotNull
+	@Size(max = 255)
+	@Column(length = 255)
 	@JsonProperty("description")
 	@ApiModelProperty(required = true, value = "Description of the instruction.")
 	private String description = null;

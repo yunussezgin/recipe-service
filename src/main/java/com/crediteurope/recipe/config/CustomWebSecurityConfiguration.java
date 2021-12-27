@@ -27,15 +27,18 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		if (enabled)
-			http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().httpBasic();
+			http.authorizeRequests().antMatchers("/h2-console/**").permitAll().anyRequest().authenticated().and().httpBasic();
 		else
-			http.csrf().disable().authorizeRequests().anyRequest().anonymous().and().httpBasic().disable();
+			http.authorizeRequests().antMatchers("/").permitAll().and().authorizeRequests().antMatchers("/console/**").permitAll();
+		
+		http.csrf().disable();
+		http.headers().frameOptions().disable();
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser(userName)
-				.password(passwordEncoder().encode(userPassword)).authorities("ROLE_USER");
+				.password(passwordEncoder().encode(userPassword)).authorities("USER");
 	}
 
 	@Bean
