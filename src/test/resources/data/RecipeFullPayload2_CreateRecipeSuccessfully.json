@@ -1,88 +1,88 @@
 {
-	"name": "Guacamole",
-	"description": "You can make this avocado salad smooth or chunky depending on your tastes.",
-	"prepTime": "10",
-	"serving": 4,
-	"isVegetarian": true,
-	"category": {
-		"name": "Appetizers and Snacks"
-	},
-	"user": {
-		"name": "ysezgin"
-	},
-	"recipeInstruction": [
-		{
-			"stepNumber": 1,
-			"description": "In a medium bowl, mash together the avocados, lime juice, and salt. Mix in onion, cilantro, tomatoes, and garlic. Stir in cayenne pepper. Refrigerate 1 hour for best flavor, or serve immediately."
-		}
-	],
-	"recipeIngredient": [
-		{
-			"amount": "3",
-			"description": "peeled, pitted, and mashed",
-			"ingredient": {
-				"name": "avocado"
-			}
-		},
-		{
-			"amount": "1",
-			"description": "juiced",
-			"ingredient": {
-				"name": "lime"
-			}
-		},
-		{
-			"amount": "1",
-			"unit": "teaspoon",
-			"ingredient": {
-				"name": "salt"
-			}
-		},
-		{
-			"amount": "0.5",
-			"unit": "cup",
-			"description": "diced",
-			"ingredient": {
-				"name": "onion"
-			}
-		},
-		{
-			"amount": "3",
-			"unit": "teaspoon",
-			"description": "chopped",
-			"ingredient": {
-				"name": "fresh cilantro"
-			}
-		},
-		{
-			"amount": "2",
-			"description": "diced",
-			"ingredient": {
-				"name": "roma tomato"
-			}
-		},
-		{
-			"amount": "1",
-			"unit": "teaspoon",
-			"description": "minced",
-			"ingredient": {
-				"name": "garlic"
-			}
-		},
-		{
-			"amount": "1",
-			"unit": "pinch",
-			"description": "ground",
-			"isOptional": true,
-			"ingredient": {
-				"name": "cayenne pepper"
-			}
-		}
-	],
-	"image": [
-		{
-			"name": "cookies",
-			"url": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2015%2F08%2F4521556.jpg"
-		}
-	]
+    "name": "Guacamole",
+    "description": "You can make this avocado salad smooth or chunky depending on your tastes.",
+    "prepTime": 10,
+    "serving": 4,
+    "isVegetarian": true,
+    "category": {
+        "name": "Appetizers and Snacks"
+    },
+    "user": {
+        "name": "ysezgin"
+    },
+    "recipeInstruction": [
+        {
+            "stepNumber": 1,
+            "description": "In a medium bowl, mash together the avocados, lime juice, and salt. Mix in onion, cilantro, tomatoes, and garlic. Stir in cayenne pepper. Refrigerate 1 hour for best flavor, or serve immediately."
+        }
+    ],
+    "recipeIngredient": [
+        {
+            "amount": 3,
+            "description": "peeled, pitted, and mashed",
+            "ingredient": {
+                "name": "avocado"
+            }
+        },
+        {
+            "amount": 1,
+            "description": "juiced",
+            "ingredient": {
+                "name": "lime"
+            }
+        },
+        {
+            "amount": 1,
+            "unit": "teaspoon",
+            "ingredient": {
+                "name": "salt"
+            }
+        },
+        {
+            "amount": 0.5,
+            "unit": "cup",
+            "description": "diced",
+            "ingredient": {
+                "name": "onion"
+            }
+        },
+        {
+            "amount": 3,
+            "unit": "teaspoon",
+            "description": "chopped",
+            "ingredient": {
+                "name": "fresh cilantro"
+            }
+        },
+        {
+            "amount": 2,
+            "description": "diced",
+            "ingredient": {
+                "name": "roma tomato"
+            }
+        },
+        {
+            "amount": 1,
+            "unit": "teaspoon",
+            "description": "minced",
+            "ingredient": {
+                "name": "garlic"
+            }
+        },
+        {
+            "amount": 1,
+            "unit": "pinch",
+            "description": "ground",
+            "isOptional": true,
+            "ingredient": {
+                "name": "cayenne pepper"
+            }
+        }
+    ],
+    "image": [
+        {
+            "name": "guacamole",
+            "url": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2015%2F08%2F4521556.jpg"
+        }
+    ]
 }

@@ -1,9 +1,9 @@
 {
 	"name": "Easy Sugar Cookies",
 	"description": "Quick and easy sugar cookies! They are really good, plain or with candies in them. My friend uses chocolate mints on top, and they're great!",
-	"cookTime": "10",
-	"prepTime": "30",
-	"serving": 48,
+    "cookTime": 10,
+    "prepTime": 20,
+    "serving": 48,
 	"isVegetarian": false,
 	"category": {
 		"name": "Desserts"
@@ -11,57 +11,57 @@
 	"user": {
 		"name": "ysezgin"
 	},
-	"recipeIngredient": [
-		{
-			"amount": "2.75",
-			"unit": "cup",
-			"ingredient": {
-				"name": "all-purpose flour"
-			}
-		},
-		{
-			"amount": "1",
-			"unit": "teaspoon",
-			"ingredient": {
-				"name": "baking soda"
-			}
-		},
-		{
-			"amount": "0.5",
-			"unit": "teaspoon",
-			"ingredient": {
-				"name": "baking powder"
-			}
-		},
-		{
-			"amount": "1",
-			"unit": "cup",
-			"description": "softened",
-			"ingredient": {
-				"name": "butter"
-			}
-		},
-		{
-			"amount": "1.5",
-			"unit": "cup",
-			"ingredient": {
-				"name": "white sugar"
-			}
-		},
-		{
-			"amount": "1",
-			"ingredient": {
-				"name": "egg"
-			}
-		},
-		{
-			"amount": "1",
-			"unit": "teaspoon",
-			"ingredient": {
-				"name": "vanilla extract"
-			}
-		}
-	],
+    "recipeIngredient": [
+        {
+            "amount": 2.75,
+            "unit": "cup",
+            "ingredient": {
+                "name": "all-purpose flour"
+            }
+        },
+        {
+            "amount": 1,
+            "unit": "teaspoon",
+            "ingredient": {
+                "name": "baking soda"
+            }
+        },
+        {
+            "amount": 0.5,
+            "unit": "teaspoon",
+            "ingredient": {
+                "name": "baking powder"
+            }
+        },
+        {
+            "amount": 1,
+            "unit": "cup",
+            "description": "softened",
+            "ingredient": {
+                "name": "butter"
+            }
+        },
+        {
+            "amount": 1.5,
+            "unit": "cup",
+            "ingredient": {
+                "name": "white sugar"
+            }
+        },
+        {
+            "amount": 1,
+            "ingredient": {
+                "name": "egg"
+            }
+        },
+        {
+            "amount": 1,
+            "unit": "teaspoon",
+            "ingredient": {
+                "name": "vanilla extract"
+            }
+        }
+    ],
 	"image": [
 		{
 			"name": "cookies",
