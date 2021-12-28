@@ -1,9 +1,9 @@
 {
 	"name": "Easy Sugar Cookies",
 	"description": "Quick and easy sugar cookies! They are really good, plain or with candies in them. My friend uses chocolate mints on top, and they're great!",
-	"cookTime": "10",
-	"prepTime": "30",
-	"serving": 48,
+    "cookTime": 10,
+    "prepTime": 20,
+    "serving": 48,
 	"isVegetarian": false,
 	"category": {
 		"name": "Desserts"
