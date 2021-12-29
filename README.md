@@ -1,6 +1,9 @@
 # Recipe Management API
 The web application allows users to manage your favorite recipes.
 
+**Recipe API Specification Document:** [Download](https://github.com/yunussezgin/github-project-images/blob/master/recipe-service/Recipe_API_Specification_Document-v1.pdf)</p>
+**Recipe API Technical Document:** [Download](https://github.com/yunussezgin/github-project-images/blob/master/recipe-service/Recipe_API_Technical_Document-v1.pdf)
+
 ### Required tools to run the API
 - JDK 8
 - Maven
